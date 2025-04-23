@@ -87,7 +87,15 @@ export default function ReceiptGenerator() {
       <Button variant="contained" onClick={generatePDF} sx={{ mb: 4 }}>
         Gerar PDF
       </Button>
-      <Box ref={receiptRef} sx={{ p: 2, border: '1px solid #ccc' }}>
+      <Box  ref={receiptRef}
+      sx={{
+        p: 4,
+        width: '100%',
+        maxWidth: '800px',
+        margin: '0 auto',
+        border: '1px solid #ccc',
+        backgroundColor: '#fff',
+                 }}>
         <Typography sx={{ fontFamily: 'cookie', fontSize: 62, textAlign: 'center' }}> {PROVIDER.name}</Typography>
         <Typography sx={{ mt: 2, fontWeight: 'bold' }}>RECIBO Nº {formatReceiptNumber(receiptNumber)}</Typography>
         <Typography sx={{ mt: 2, fontWeight: 'bold' }}>
