@@ -106,7 +106,7 @@ export default function ReceiptGenerator() {
         <Typography sx={{ fontFamily: 'cookie', fontSize: 45, textAlign: 'center' }}> {PROVIDER.name}</Typography>
         <Typography sx={{ fontFamily: 'cookie', fontSize: 20, textAlign: 'center', mt: 0 }}> Instrumentadora Cirúrgica</Typography>
         <Typography sx={{ mt: 2, fontWeight: 'bold' }}>RECIBO Nº {formatReceiptNumber(receiptNumber)}</Typography>
-        <Typography sx={{ mt: 2, fontWeight: 'bold' }}>
+        <Typography sx={{ mt: 2, fontWeight: 'bold', fontSize: 15}}>
           CPF: {PROVIDER.cpf} - COREN: {PROVIDER.coren} - CELULAR: {PROVIDER.telefone} - EMAIL: {PROVIDER.email}
         </Typography>
         <Typography sx={{ mt: 2 }}>
