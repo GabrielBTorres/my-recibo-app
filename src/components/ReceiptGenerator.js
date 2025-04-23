@@ -50,11 +50,10 @@ export default function ReceiptGenerator() {
   const generatePDF = () => {
     const element = receiptRef.current;
     html2canvas(element, {
-      scale: 2,
+      scale: window.devicePixelRatio || 2,
       useCORS: true,
-      logging: false,
-      scrollY: 0,
       scrollX: 0,
+      scrollY: 0,
       windowWidth: element.scrollWidth,
       windowHeight: element.scrollHeight,
     }).then(canvas => {
@@ -64,7 +63,7 @@ export default function ReceiptGenerator() {
       const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
       pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
       pdf.save(`recibo_${formatReceiptNumber(receiptNumber)}.pdf`);
-
+  
       const nextNumber = receiptNumber < 999 ? receiptNumber + 1 : 1;
       setReceiptNumber(nextNumber);
       localStorage.setItem('receiptNumber', nextNumber);
