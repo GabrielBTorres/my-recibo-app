@@ -1,0 +1,9 @@
+# Ignorar dependências
+node_modules/
+
+# Outros arquivos comuns a ignorar
+.env
+build/
+.DS_Store
+*.log
+
