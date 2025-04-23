@@ -48,12 +48,20 @@ export default function ReceiptGenerator() {
   };
 
   const generatePDF = () => {
-    html2canvas(receiptRef.current, { scale: 2 }).then(canvas => {
+    const element = receiptRef.current;
+    html2canvas(element, {
+      scale: 2,
+      useCORS: true,
+      logging: false,
+      scrollY: 0,
+      scrollX: 0,
+      windowWidth: element.scrollWidth,
+      windowHeight: element.scrollHeight,
+    }).then(canvas => {
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF('landscape', 'pt', 'a4');
-      const imgProps = pdf.getImageProperties(imgData);
       const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
       pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
       pdf.save(`recibo_${formatReceiptNumber(receiptNumber)}.pdf`);
 
